@@ -58,7 +58,7 @@ for row in rows:
     cleantext = BeautifulSoup(str_cells, "lxml").get_text()
     cleantext = cleantext[1:-1]
     result = [x.strip() for x in cleantext.split(', ')]
-    #print(result)
+    print(result)
     
     if 'Andhra Pradesh, ' in cleantext:
         #print(cleantext)

@@ -4,7 +4,7 @@ import pandas as pd
 
 
 def ConvertToInt(num):
-    
+    num = str(num)
     num = num.rstrip()
     if "," in num:
         
@@ -23,7 +23,10 @@ def CleanString(data):
     data = data.rstrip()
 
     if data.startswith("Tot") and "1M" in data and "pop" in data.lower():
-        return "Total_Cases_1M_Pop"
+        if "cases" in data.lower():
+            return "Total_Cases_1M_Pop"
+        else:
+            return "Total_Deaths_1M_Pop"
     
     if data == "":
         return ""
@@ -139,8 +142,8 @@ for row in rows:
 
 print("Web-Scraping completed !")
 
-df["TotalRecovered"] = df["TotalRecovered"].apply(ConvertToInt)
-df["TotalCases"] = df["TotalCases"].apply(ConvertToInt)
+#df["TotalRecovered"] = df["TotalRecovered"].apply(ConvertToInt)
+#df["TotalCases"] = df["TotalCases"].apply(ConvertToInt)
 
 #df["Percentage-recovered"] = df["TotalRecovered"]/df["TotalCases"]*100
 
